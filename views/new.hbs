@@ -1,0 +1,100 @@
+<h1 class="mb-0 restaurant-show-title"> 加入餐廳</h1>
+
+<div class="container mb-5" style="margin-top:-30px; ">
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto">
+
+
+      <div class="mb-5">
+        <a class="text-danger font-weight-normal" style="font-size: 20px;" href="/">Back</a>
+      </div>
+
+
+
+      <form action="/restaurants" method="post">
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-name" class="col-sm-3 col-form-label text-secondary text-right">
+            <span class="text-danger">*</span>
+            名稱：
+          </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="restaurant-name" name="name" placeholder="請輸入餐廳名稱" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">請輸入餐聽名稱：</div>
+          </div>
+        </div>
+
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-category" class="col-sm-3 col-form-label text-secondary text-right ">類型：</label>
+          <div class="col-sm-9">
+            {{!-- <input type="text" class="form-control" id="restaurant-category" name="category"
+              placeholder="請輸入餐廳類型"> --}}
+            <input list="category-options" class="form-control" name="category" id="restaurant-category"
+              value="{{restaurant.category}}">
+            <datalist id="category-options">
+              <option value="美式料理">美式料理
+              <option value="日本料理">日本料理
+              <option value="義式料理">義式料理
+              <option value="酒吧">酒吧
+              <option value="中東料理">中東料理
+              <option value="咖啡廳">咖啡廳
+            </datalist>
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-image" class="col-sm-3 col-form-label text-secondary text-right">照片：</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="restaurant-image" name="image" placeholder="請加入照片連結：http://...">
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-tel" class="col-sm-3 col-form-label text-secondary text-right">電話：</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="restaurant-tel" name="phone" placeholder="請輸入餐廳電話"
+              maxlength="12">
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-address" class="col-sm-3 col-form-label text-secondary text-right">地址：</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="restaurant-address" name="location" placeholder="請輸入餐廳地址">
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-map" class="col-sm-3 col-form-label text-secondary text-right ">google_map：</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="restaurant-map" name="google_map"
+              placeholder="請加入google_map連結：http://...">
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-rating" class="col-sm-3 col-form-label text-secondary text-right">評價：</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="restaurant-rating" name="rating" placeholder="請輸入餐廳評價" min="0"
+              max="5" step="0.1">
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="restaurant-description" class="col-sm-3 col-form-label text-secondary text-right">簡介：</label>
+          <div class="col-sm-9">
+            <textarea type="text" rows="3" class="form-control" id="restaurant-description" name="description"
+              placeholder="請輸入餐廳簡介"></textarea>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center mb-5 ">
+          <button class="ml-5 mt-2 btn btn-danger" id="submit-button" type="submit">新增</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

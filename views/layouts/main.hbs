@@ -1,0 +1,44 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>家庭記帳本</title>
+
+    <link
+      rel='stylesheet'
+      href='https://use.fontawesome.com/releases/v5.15.2/css/all.css'
+      integrity='sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu'
+      crossorigin='anonymous'
+    />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body>
+    <nav class='navbar navbar-light bg-light px-2 border-bottom mb-5'>
+      <a class='navbar-brand fw-bold' href='/'>
+        {{#if user.name}}{{user.name}}{{else}}我{{/if}}的記帳本
+      </a>
+      {{! <a class="btn btn-major" href="/users/logout">登出</a> }}
+      <div>
+        {{#if isAuthenticated}}
+          <a class='btn btn-info btn-sm' href='/users/logOut'>登出</a>
+        {{else}}
+          <a class='btn btn-info btn-sm' href='/users/login'>登入</a>
+        {{/if}}
+        <a class='btn btn-major btn-sm' href='/users/register'>註冊</a>
+      </div>
+    </nav>
+    <div class='container-fluid mb-3'>
+      {{! 分頁顯示 }}
+      {{{body}}}
+    </div>
+
+    <script src='/javascript/jquery-3.3.1.js'></script>
+    <script src='/javascript/popper.min.js'></script>
+    <script src='/javascript/bootstrap.js'></script>
+  </body>
+
+</html>

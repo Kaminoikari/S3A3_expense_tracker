@@ -1,0 +1,27 @@
+<div class="container login">
+  <div class="row">
+    <div class=" col-8 m-auto">
+      <div class="card card-body mb-5">
+        <div class="container col-9 mx-auto mb-3">
+          <h2 class="text-center mt-5 mb-2">Login</h2>
+          {{> message}}
+          <form action="/users/login" method="post">
+            <div class=" mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Please enter your email...">
+            </div>
+            <div class=" mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" name="password" class="form-control"
+                placeholder="Please enter your password...">
+            </div>
+            <button class="btn mt-4 btn-block mx-auto" style="background-color:#4c9cb9; color:white; "
+              type="submit">Login</button>
+          </form>
+          <a href="/auth/facebook" class="btn btn-primary mt-2  d-block mx-auto">Facebook Login</a>
+          <p class="lead mt-3 mb-5">No account? <a href="/users/register">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+body {
+  font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: black;
+}
+also .total-amount {
+  font-size: 64px;
+  color: #fd7e14;
+}
+
+.record .icon {
+  color: #65b2bf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 0;
+}
+
+.flex-column-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.record .name,
+.record .amount,
+.btn,
+.font-size-larger {
+  font-size: larger;
+}
+
+.font-size-large {
+  font-size: large;
+}
+
+.btn-major {
+  background-color: #fd7e14;
+  color: #ffffff;
+}
+
+.btn-major:hover {
+  background-color: #bd3e00;
+  color: #ffffff;
+}
+
+.border-major {
+  border-color: #fd7e14 !important;
+}
+
+.row-striped .row:nth-child(odd) {
+  background-color: #fae1dd;
+}
+
+/* custom input start */
+.custom-input {
+  box-shadow: none !important;
+  border-width: 0px !important;
+  border-bottom: 2px solid #a5a58d !important;
+  border-radius: 0 !important;
+}
+.custom-input:focus {
+  border-color: #6b705c !important;
+}
+
+/* custom valid and invalid */
+.was-validated .custom-input:invalid {
+  border-color: #e63946 !important;
+}
+
+.was-validated .custom-input:valid {
+  border-color: #2a9d8f !important;
+}
+
+/* custom input end */
+
+@media screen and (max-width: 768px) {
+  .record .icon {
+    margin-top: 2vh;
+    justify-content: start;
+  }
+
+  .flex-column-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
