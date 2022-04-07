@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 // mongoDB
 const mongoose = require('mongoose')
 const routes = require('./routes')
+require('./config/mongoose.js')
 
 // app
 const app = express()
