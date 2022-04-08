@@ -25,42 +25,60 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-  let errors = []
   const { name, email, password, confirmPassword } = req.body
+  const errors = []
 
   if (!name || !email || !password || !confirmPassword) {
-    errors.push({ message: '所有欄位皆為必填' });
+    errors.push({ message: '所有欄位皆為必填' })
   }
   if (password !== confirmPassword) {
-    errors.push({ message: '密碼與確認密碼不符，請再重新輸入' });
+    errors.push({ message: '密碼與確認密碼不符，請再重新輸入' })
   }
   if (errors.length) {
-    return res.render('register', { ...req.body, errors })
+    return res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      confirmPassword,
+    })
   }
 
-  try {
-    let user = await User.findOne({ email })
+  User.findOne({ email })
+    .then((user) => {
+      if (user) {
+        errors.push({
+          message: '這個Email已經註冊過了。',
+        })
+        return res.render('register', {
+          errors,
+          name,
+          email,
+          password,
+          confirmPassword,
+        })
+      }
 
-    if (user) {
-      req.flash('warning_msg', '此電子郵件已被註冊')
-      return res.render('register', { ...req.body })
-    }
-
-    let salt = await bcrypt.genSalt(10);
-    let hash = await bcrypt.hash(password, salt)
-
-    //register user
-    await User.create({ name, email, password: hash })
-    res.redirect('/users/login')
-  } catch (e) {
-    console.error(e);
-  }
+      return bcrypt
+        .genSalt(10) // 產生「鹽」，並設定複雜度係數為 10
+        .then((salt) => bcrypt.hash(password, salt)) // 為使用者密碼「加鹽」，產生雜湊值
+        .then((hash) =>
+          User.create({
+            name,
+            email,
+            password: hash, // 用雜湊值取得原本的使用者密碼
+          })
+        )
+        .then(() => res.redirect('/'))
+        .catch((err) => console.log(err))
+    })
+    .catch((err) => console.log(err))
 })
 
-router.get('/logOut', (req, res) => {
-  req.logOut()
-  res.redirect('/login')
-  return req.flash('success_msg', '您已成功登出')
+router.get('/logout', (req, res) => {
+  req.logout()
+  req.flash('success_msg', '您已經成功登出。')
+  res.redirect('/users/login')
 })
 
 module.exports = router

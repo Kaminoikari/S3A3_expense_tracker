@@ -50,6 +50,10 @@ router.get('/', async (req, res) => {
       //dateFormat => yyyy-mm-dd
       record.date = timeFormat(record.date)
 
+      record.iconName = categories.find(
+        (item) => item.name === record.category
+      ).className
+
       
     })
 
@@ -70,7 +74,7 @@ router.get('/', async (req, res) => {
       records,
     })
   } catch (e) {
-    console.warn(e)
+    console.error(e)
   }
 })
 
