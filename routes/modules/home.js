@@ -59,7 +59,7 @@ router.get('/', async (req, res) => {
 
     //計算總金額
     const totalNum = records.reduce(
-      (prev, record) => (prev += record.amount),0)
+      (prev, record) => (prev += record.amount), 0)
 
     const totalAmount = totalNum.toLocaleString()
 

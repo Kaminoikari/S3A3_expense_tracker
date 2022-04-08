@@ -3,7 +3,7 @@
     <form action="/" method="get" class="row">
       <div class="col-auto">
         <select class="form-control" name="category" aria-label="select category" id="category" onchange="submit();">
-          <option value="">所有分類</option>
+          <option value="">---所有分類---</option>
           {{#each categories}}
           <option value="{{this.name}}" {{#isEqual ../categoryValue this.name }}selected{{/isEqual}}>{{this.title}}
           </option>
@@ -12,7 +12,7 @@
       </div>
       <div class="col-auto">
         <select class="form-control" name="year" aria-label="select month" onchange="submit();">
-          <option value="">所有年份</option>
+          <option value="">---所有年份---</option>
           {{#each yearList}}
           <option value="{{ this }}" {{#isEqual ../yearValue this}}selected{{/isEqual}}>{{ this }}
           </option>
@@ -21,7 +21,7 @@
       </div>
       <div class="col-auto">
         <select class="form-control" name="month" aria-label="select month" onchange="submit();">
-          <option value="">所有月份</option>
+          <option value="">---所有月份---</option>
           {{#each monthList}}
           <option value="{{this.value}}" {{#isEqual ../monthValue this.value}}selected{{/isEqual}}>{{this.name}}
           </option>

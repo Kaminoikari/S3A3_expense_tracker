@@ -74,6 +74,7 @@ router.put('/:id', (req, res) => {
     .catch((err) => console.log(err))
 })
 
+// 刪除頁面
 router.delete('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
