@@ -2,12 +2,6 @@ body {
   font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
 }
 
-.welcome-landing {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
-    url('/images/pexels-photo-730564.jpeg');
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
