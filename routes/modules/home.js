@@ -61,6 +61,7 @@ router.get('/', async (req, res) => {
     const totalNum = records.reduce(
       (prev, record) => (prev += record.amount), 0)
 
+      // 加上千位分隔符
     const totalAmount = totalNum.toLocaleString()
 
     return res.render('index', {
