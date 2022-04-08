@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    <header>
     <nav class='navbar navbar-light bg-light px-2 border-bottom mb-5'>
       <a class='navbar-brand fw-bold' href='/'>
         {{#if user.name}}{{user.name}}的{{else}}家庭{{/if}}記帳本
@@ -30,6 +31,7 @@
         {{/if}}
       </div>
     </nav>
+  </header>
     <div class='container-fluid mb-3'>
 
       {{{body}}}
