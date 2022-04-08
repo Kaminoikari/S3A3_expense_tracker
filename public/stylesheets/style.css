@@ -1,5 +1,13 @@
 body {
-  font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+  background: hsl(218deg 50% 91%);
+  color: #000;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  font-family: 'Abel', sans-serif;
 }
 
 input:-webkit-autofill,
@@ -14,6 +22,10 @@ input:-webkit-autofill:active {
 also .total-amount {
   font-size: 64px;
   color: #fd7e14;
+}
+
+.card {
+  background: hsl(213deg 85% 97%);
 }
 
 .record .icon {
@@ -49,6 +61,45 @@ also .total-amount {
 
 .btn-major:hover {
   background-color: #bd3e00;
+  color: #ffffff;
+}
+
+.btn-login {
+		background: rgb(157, 233, 143);
+		color: hsl(0 0 100);
+		border: none;
+		border-radius: 25px;
+		font-weight: 400;
+}
+
+.btn-login:hover {
+  background-color: #52ab2f;
+  color: #ffffff;
+}
+
+.btn-fblogin {
+		background: rgb(235, 174, 50);
+		color: hsl(0 0 100);
+		border: none;
+		border-radius: 25px;
+		font-weight: 400;
+}
+
+.btn-fblogin:hover {
+  background-color: #d88b0e;
+  color: #ffffff;
+}
+
+.btn-register {
+		background: rgb(57, 158, 221);
+		color: hsl(0 0 100);
+		border: none;
+		border-radius: 30px;
+		font-weight: 400;
+}
+
+.btn-register:hover {
+  background-color: #3c45f3;
   color: #ffffff;
 }
 
