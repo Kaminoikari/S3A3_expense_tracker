@@ -19,9 +19,9 @@
   <body>
     <nav class='navbar navbar-light bg-light px-2 border-bottom mb-5'>
       <a class='navbar-brand fw-bold' href='/'>
-        {{#if user.name}}{{user.name}}{{else}}我{{/if}}的記帳本
+        {{#if user.name}}{{user.name}}的{{else}}家庭{{/if}}記帳本
       </a>
-      {{! <a class="btn btn-major" href="/users/logout">登出</a> }}
+      
       <div>
         {{#if isAuthenticated}}
           <a class='btn btn-info btn-sm' href='/users/logOut'>登出</a>
@@ -36,7 +36,6 @@
       {{{body}}}
     </div>
 
-    <script src='/javascript/jquery-3.3.1.js'></script>
     <script src='/javascript/popper.min.js'></script>
     <script src='/javascript/bootstrap.js'></script>
   </body>

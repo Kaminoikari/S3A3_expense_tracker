@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const detailSchema = new Schema({
+const recordSchema = new Schema({
   name: {
     type: String,
     require: true,
@@ -30,4 +30,4 @@ const detailSchema = new Schema({
   },
 })
 
-module.exports = mongoose.model('Detail', detailSchema)
+module.exports = mongoose.model('Record', recordSchema)
