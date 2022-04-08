@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
           month: month ? Number(month) : Number,
         },
       },
+      // sort descending
       { $sort: { date: -1 } },
     ])
     let categories = await Category.find().lean()
