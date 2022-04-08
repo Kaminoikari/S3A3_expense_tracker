@@ -63,14 +63,13 @@ router.put('/:id', (req, res) => {
   const { name, category, date, amount, merchant } = req.body
 
   Record.findOne({ _id, userId })
-    .lean()
     .then(record => {
       record = Object.assign(record, { name, category, date, amount, merchant })
-      return record.save()
+      record.save()
     })
     .then (() => {
       req.flash('success_msg', '更新成功')
-      res.redirect(`/records/${_id}`)
+      res.redirect('/')
     })
     .catch((err) => console.log(err))
 })

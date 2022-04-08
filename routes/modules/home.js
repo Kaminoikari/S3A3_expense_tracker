@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+
 //monthList
 const monthList = require('../../config/monthList.json').month
 
@@ -14,8 +15,7 @@ router.get('/', async (req, res) => {
   const userId = req.user._id
   const { category, year, month } = req.query
   try {
-    //使用 aggregate 不需要使用 lean()
-    //https://stackoverflow.com/questions/47768327/mongodb-using-lean-on-aggregate-function
+    //使用 aggregate 不需使用 lean()
     let records = await Record.aggregate([
       {
         $project: {
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
         $match: {
           userId,
           category: category || String,
-          year: year ? Number(year) : Number, //default value 就直接帶 column 的型別
+          year: year ? Number(year) : Number,
           month: month ? Number(month) : Number,
         },
       },

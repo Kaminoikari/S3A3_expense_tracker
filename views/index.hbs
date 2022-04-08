@@ -49,12 +49,12 @@
         <i class="{{ this.iconName }} fa-2x"></i>
       </div>
       <div class="col-md-3 py-2 flex-column-center mt-2 mt-0 order-2">
-        <div class="text-bold mb-1">{{ this.name }}</div>
+        <div class="text-bold mb-1">購買品項：{{ this.name }}</div>
         <div class="">{{ this.date }}</div>
       </div>
       <div class="col-md-3 flex-column-right flex-column-center order-2">
-        <div class="mb-1">{{ this.amount }}元</div>
-        <div class="">{{ this.merchant }}</div>
+        <div class="mb-1">TWD {{ this.amount }} 元</div>
+        <div class="">商家：{{ this.merchant }}</div>
       </div>
       <div class="col-6 col-md-3 d-flex justify-content-end align-items-center order-1 order-md-2">
         <form action="/records/{{ this._id }}/edit" method="get">
