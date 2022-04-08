@@ -12,69 +12,80 @@ router.get('/new', (req, res) => {
   const config = {
     title: '新增支出',
     action: '/records',
-  };
-  res.render('new', { config, category });
-});
+  }
+  return res.render('new', { config, category })
+})
 
 router.post('/', (req, res) => {
   const userId = req.user._id;
   const { name, category, date, amount, merchant } = req.body;
   //缺欄位
   if (!name || !category || !date || !amount || !merchant) {
-    req.flash('warning_msg', '所有欄位皆為必填');
-    return res.redirect('/records/new');
+    req.flash('warning_msg', '所有欄位皆為必填')
+    return res.redirect('/records/new')
   }
-  Record.create({
-    ...req.body,
+  return Record.create({
+    name,
+    category,
+    date,
+    amount,
+    merchant,
     userId,
   })
-    .then(() => res.redirect('/'))
-    .catch((err) => console.log(err));
-});
+    .then(() => {
+      req.flash('success_msg', '建立成功')
+      res.redirect('/')
+    })
+    .catch(err => console.log (err))
+})
 
+// 修改頁面
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id;
-  const record_id = req.params.id;
+  const _id = req.params.id;
   const config = {
     title: '修改支出',
-    action: `/records/${record_id}?_method=PUT`,
+    action: `/records/${_id}?_method=PUT`,
   };
-  Record.findOne({ _id: record_id, userId })
+  return Record.findOne({ _id, userId })
     .lean()
     .then((record) => {
       record.date = timeFormat(record.date);
-      return res.render('edit', { config, category, record });
+      res.render('edit', { config, category, record })
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
 });
 
+// 更新頁面
 router.put('/:id', (req, res) => {
-  const userId = req.user._id;
-  const record_id = req.params.id;
-  const { name, category, date, amount, merchant } = req.body;
+  const userId = req.user._id
+  const _id = req.params.id
+  const { name, category, date, amount, merchant } = req.body
 
-  Record.findOne({ _id: record_id, userId })
-    .then((record) => {
-      record.name = name;
-      record.category = category;
-      record.date = date;
-      record.amount = amount;
-      record.merchant = merchant;
-      return record.save();
+  Record.findOne({ _id, userId })
+    .lean()
+    .then(record => {
+      record = Object.assign(record, { name, category, date, amount, merchant })
+      return record.save()
     })
-    .then(() => res.redirect('/'))
-    .catch((err) => console.log(err));
-});
+    .then (() => {
+      req.flash('success_msg', '更新成功')
+      res.redirect(`/records/${_id}`)
+    })
+    .catch((err) => console.log(err))
+})
 
 router.delete('/:id', (req, res) => {
-  const userId = req.user._id;
-  const record_id = req.params.id;
-  Record.findOne({ _id: record_id, userId })
-    .then((record) => {
-      record.remove();
-      return res.redirect('/');
+  const userId = req.user._id
+  const _id = req.params.id
+
+  return Record.findOne({ _id, userId })
+    .then(record => record.remove())
+    .then(() => {
+      req.flash('success_msg', '明細刪除成功')
+      res.redirect('/')
     })
-    .catch((err) => console.log(err));
-});
+    .catch((err) => console.log(err))
+})
 
 module.exports = router

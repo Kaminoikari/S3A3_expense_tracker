@@ -5,19 +5,38 @@ const bcrypt = require('bcryptjs')
 const User = require('../../models/user')
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  const email = ''
+  const errors = []
+  res.render('login', { errors, email })
 })
 
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login',
-  })
-)
-
+router.post('login', (req, res, next) => {
+  const { email, password } = req.body
+  const errors = []
+  if (!email || !password) {
+    req.flash('error_msg', '各欄位不得為空白')
+    res.redirect('/login')
+  }
+  passport.authenticate('local', (err, user, info) => {
+    req.login(user, err => {
+      if (err) {
+        if(info.message === 'user') {
+          errors.push ({message: '找不到使用者'})
+        } else {
+          errors.push ({message: '密碼錯誤'})
+        }
+        res.render('login', { email, errors })
+      }
+      req.flash('success_msg', '登入成功，歡迎！')
+      res.redirect('/')
+    })
+  }) (req, res, next)
+})
+  
 router.get('/register', (req, res) => {
-  res.render('register')
+  const { name, email } = ''
+  const errors = []
+  res.render('register', { errors, name, email })
 })
 
 router.post('/register', async (req, res) => {

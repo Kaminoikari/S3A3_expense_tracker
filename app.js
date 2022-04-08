@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 // mongoDB
 const mongoose = require('mongoose')
 const routes = require('./routes')
+const handlebarsHelpers = require('./util/handlebarsHelpers')
 require('./config/mongoose.js')
 
 // app
@@ -22,7 +23,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 // express template engine
-app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 
 // setting static files

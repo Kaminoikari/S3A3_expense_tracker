@@ -1,19 +1,21 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const Record = require('../../models/record');
-const Category = require('../../models/category');
-
+const Record = require('../../models/record')
+const Category = require('../../models/category')
 //monthList
 const monthList = require('../../config/monthList.json').month
 
 //util
 const timeFormat = require('../../util/timeFormat')
+const getRecordYear = require('../../util/getRecordYear')
 
 router.get('/', async (req, res) => {
-  const userId = req.user._id;
-  const { category, year, month } = req.query;
+  const userId = req.user._id
+  const { category, year, month } = req.query
   try {
+    //使用 aggregate 不需要使用 lean()
+    //https://stackoverflow.com/questions/47768327/mongodb-using-lean-on-aggregate-function
     let records = await Record.aggregate([
       {
         $project: {
@@ -32,46 +34,30 @@ router.get('/', async (req, res) => {
         $match: {
           userId,
           category: category || String,
-          year: year ? Number(year) : Number, 
+          year: year ? Number(year) : Number, //default value 就直接帶 column 的型別
           month: month ? Number(month) : Number,
         },
       },
       { $sort: { date: -1 } },
-    ]);
-    let categories = await Category.find().lean();
-    let yearList = new Set(); //存取所有收支紀錄中的年份
-    //searchFilter
-    // details = details.filter(detail => {
-    //     let detailYear = detail.date.getFullYear().toString()
-    //     let detailMonth = (detail.date.getMonth() + 1).toString()
-
-    //     //generate yearList 存取所有收支紀錄中的年份
-    //     yearList = getDetailYear(detailYear, yearList)
-
-    //     const categoryFilter = category === detail.category || !category
-    //     const yearFilter = year === detailYear || !year
-    //     const monthFilter = month === detailMonth || !month
-
-    //     return categoryFilter && yearFilter && monthFilter
-    // })
+    ])
+    let categories = await Category.find().lean()
+    let yearList = new Set() //存取所有收支紀錄中的年份
+ 
     records.forEach((record) => {
       //generate yearList 存取所有收支紀錄中的年份
-      yearList = getrecordYear(record, yearList);
+      yearList = getRecordYear(record, yearList)
 
       //dateFormat => yyyy-mm-dd
-      record.date = timeFormat(record.date);
+      record.date = timeFormat(record.date)
 
-      //iconFilter get icon by compare to category
-      record.iconName = categories.find(
-        (item) => item.name === record.category
-      ).className;
-    });
+      
+    })
 
     //計算總金額
-    let totalAmount = records.reduce(
-      (prev, record) => (prev += record.amount),
-      0
-    );
+    const totalNum = records.reduce(
+      (prev, record) => (prev += record.amount),0)
+
+    const totalAmount = totalNum.toLocaleString()
 
     return res.render('index', {
       categories,
@@ -82,10 +68,10 @@ router.get('/', async (req, res) => {
       monthList,
       totalAmount,
       records,
-    });
+    })
   } catch (e) {
-    console.error(e);
+    console.warn(e)
   }
-});
+})
 
 module.exports = router
