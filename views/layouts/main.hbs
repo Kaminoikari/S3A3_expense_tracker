@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang='en'>
 
   <head>
@@ -22,12 +21,12 @@
       <a class='navbar-brand fw-bold' href='/'>
         {{#if user.name}}{{user.name}}的{{else}}家庭{{/if}}記帳本
       </a>
-      <div class="d-flex">
+      <div class='d-flex'>
         {{#if isAuthenticated}}
-          <a class='btn btn-info btn-sm' href='/users/logOut'>登出</a>
+          <a class='btn btn-info btn-sm' href='/users/logout'>登出</a>
         {{else}}
           <a class='btn login btn-info btn-sm' href='/users/login'>登入</a>
-        <a class='btn btn-major btn-sm' href='/users/register'>註冊</a>
+          <a class='btn btn-major btn-sm' href='/users/register'>註冊</a>
         {{/if}}
       </div>
     </nav>
@@ -41,5 +40,3 @@
   </body>
 
 </html>
-
-
