@@ -51,7 +51,7 @@ app.use(flash())
 
 app.use((req, res, next) => {
   // 可以在這裡 console.log(req.user) 等資訊來觀察
-  res.locals.authenticator = req.isAuthenticated();
+  res.locals.authenticator = req.isAuthenticated()
   res.locals.user = req.user
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
