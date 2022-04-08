@@ -6,23 +6,23 @@ const bcrypt = require('bcryptjs');
 const defaultUsers = [
   {
     //#1, 2, 3
-    name: 'root1',
+    name: 'User1',
     password: '12345678',
     email: 'user1@example.com',
   },
   {
-    name: 'root2',
+    name: 'User2',
     password: '12345678',
     email: 'user2@example.com',
   },
 ];
 
 const defaultRecord = {
-  name: 'PS5',
-  category: 'entertainment',
+  name: 'Japan Wagyu Beef',
+  category: 'food',
   date: Date.now(),
-  amount: 13000,
-  merchant: 'PChome',
+  amount: 9999,
+  merchant: 'Jasons超市',
   userId: '',
 };
 
@@ -49,7 +49,7 @@ db.once('open', async () => {
   } catch (e) {
     console.warn(e);
   } finally {
-    console.log('record seeder has finished ');
+    console.log('Record seeder build complete');
     process.exit();
   }
 });
