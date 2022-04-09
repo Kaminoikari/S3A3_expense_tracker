@@ -37,7 +37,7 @@ npm run dev
 http://localhost:3000；
 ```
 
-以下為測試用的「正確」使用者名稱與對應的帳密：
+以下為已預設好的「測試用」使用者名稱與對應的帳密：
 
 |（name) | email | password | (登入後可見支出紀錄）|
 |:-----:|:-----:|------:|:-----:|
@@ -50,10 +50,10 @@ http://localhost:3000；
 並在.env填入Facebook應用程式編號、應用程式密鑰  
 
 
-## 環境建置與需求 (prerequisites)
-#### 環境
-* Node.js v16.14.0
-#### Package & Dependency
+## 環境建置與需求
+#### 環境 (Runtime Environment)
+* Node.js v16.14.0  
+### Package & Dependency
 * bcryptjs: "^2.4.3",
 * body-parser: "^1.19.2",
 * connect-flash: "^0.1.1",
