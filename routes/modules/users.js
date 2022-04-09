@@ -44,7 +44,9 @@ router.post('/register', async (req, res) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        req.flash('warning_msg', '此Email已被註冊過')
+        errors.push({
+          message: '這個Email已經註冊過了。',
+        })
         return res.render('register', {
           errors,
           name,
