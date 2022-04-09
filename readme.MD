@@ -31,15 +31,21 @@ npm run seed
 ```
 npm run dev
 ```
+
+開啟預覽連結
+若是在本機操作，於瀏覽器網址列輸入http://localhost:3000；
+
+
 以下為測試用的「正確」使用者名稱與對應的帳密：
 
-(name)	email	password	(登入後可見資料)
-user1	user1@example.com	12345678	id #1, #2, #3 號記帳
-user2	user2@example.com	12345678	id #4, #5, #6 號記帳
+|（name) | email | password | (登入後可見支出紀錄）|
+|-------|:-----:|------:|
+| User1   |  user1@example.com  |   12345678 | defaultRecord |
+| User2   |  user2@example.com  |   12345678 | defaultRecord |
 
-若要測試Facebook登入功能，需到Facebook for Developers建立應用程式
-在本專案根目錄依據".env.template"內容格式，新增".env"檔案(可使用終端機指令)，
-cp .env.template .env
+
+若要測試Facebook登入功能，需到[Facebook for Developers](https://developers.facebook.com/)建立應用程式
+在本專案根目錄依據".env.template"內容格式，新增".env"檔案
 並在.env填入Facebook應用程式編號、應用程式密鑰
 
 執行本專案：
