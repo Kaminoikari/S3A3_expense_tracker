@@ -3,6 +3,10 @@
 
 免安裝連結：https://enigmatic-castle-29058.herokuapp.com/ 
 
+![6A082083-D2FF-4631-B3E1-5A05837A26E4](https://user-images.githubusercontent.com/55652178/162565426-056c6809-47f9-4345-a503-f462c39d8c22.jpeg)
+![E885D391-3C5A-4196-B01F-101E8219405C](https://user-images.githubusercontent.com/55652178/162565430-ebe471ba-8180-4a7a-bae4-0d9995541bbf.jpeg)
+
+
 ## 功能列表
 - 可依類別、年份與月份搜尋
 - 新增、編輯和刪除支出項目
