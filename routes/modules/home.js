@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
     ])
     let categories = await Category.find().lean()
     let yearList = new Set() //存取所有收支紀錄中的年份
- 
+
     records.forEach((record) => {
       //generate yearList 存取所有收支紀錄中的年份
       yearList = getRecordYear(record, yearList)
@@ -54,15 +54,22 @@ router.get('/', async (req, res) => {
       record.iconName = categories.find(
         (item) => item.name === record.category
       ).className
-
-      
     })
 
     //計算總金額
+    /* 
+    加總所有陣例之元素值
+    var sum = [0, 1, 2, 3].reduce(function (a, b) {
+    return a + b;
+    }, 0);
+    sum is 6
+    */
     const totalNum = records.reduce(
-      (prev, record) => (prev += record.amount), 0)
+      (prev, record) => (prev += record.amount),
+      0
+    )
 
-      // 加上千位分隔符
+    // 加上千位分隔符
     const totalAmount = totalNum.toLocaleString()
 
     return res.render('index', {
