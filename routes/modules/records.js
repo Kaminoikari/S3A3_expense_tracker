@@ -18,8 +18,8 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.user._id;
-  const { name, category, date, amount, merchant } = req.body;
-  //缺欄位
+  const { name, category, date, amount, merchant } = req.body
+  //若有缺欄位
   if (!name || !category || !date || !amount || !merchant) {
     req.flash('warning_msg', '所有欄位皆為必填')
     return res.redirect('/records/new')

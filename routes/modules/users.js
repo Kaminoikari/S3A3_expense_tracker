@@ -47,9 +47,7 @@ router.post('/register', async (req, res) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        errors.push({
-          message: '這個Email已經註冊過了。',
-        })
+        req.flash('warning_msg', '此Email已被註冊過')
         return res.render('register', {
           errors,
           name,
@@ -77,8 +75,8 @@ router.post('/register', async (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout()
-  req.flash('success_msg', '您已經成功登出。')
   res.redirect('/users/login')
+  req.flash('success_msg', '您已經成功登出。')
 })
 
 module.exports = router

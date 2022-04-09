@@ -22,7 +22,7 @@
                             value="{{ record.date }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="category">類別<span class="text-danger"></span></label>
+                        <label for="category">類別<span class="text-danger">*</span></label>
                         <select class="form-control custom-input" name="category" id="category" required>
                             <option value="">請選擇</option>
                             {{#each category}}
@@ -34,13 +34,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="amount">金額<span class="text-danger"></span></label>
+                        <label for="amount">金額<span class="text-danger">*</span></label>
                         <input class="form-control custom-input" type="number" name="amount" id="amount" min="0"
                             max="100000000" placeholder="請輸入金額" value="{{ record.amount }}" required>
                         <small class="form-text text-muted">單筆金額最高1億元</small>
                     </div>
                     <div class="form-group">
-                        <label for="merchant">商家<span class="text-danger"></span></label>
+                        <label for="merchant">商家<span class="text-danger">*</span></label>
                         <input class="form-control custom-input" type="text" class="form-control" id="merchant"
                             name="merchant" placeholder="請輸入商家名稱" value="{{ record.merchant }}" maxlength="20" required>
                     </div>
