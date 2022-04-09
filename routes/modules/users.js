@@ -66,15 +66,17 @@ router.post('/register', async (req, res) => {
             password: hash, // 用雜湊值取得原本的使用者密碼
           })
         )
-        .then(() => res.redirect('/'))
-        .catch((err) => console.log(err))
+        .then(() => {
+        req.flash('success_msg', '註冊成功！請登入帳號開始使用')
+        res.redirect('/users/login')
     })
+  })
     .catch((err) => console.log(err))
 })
 
 router.get('/logout', (req, res) => {
   req.logout()
-  req.flash('success_msg', '您已經成功登出。')
+  req.flash('success_msg', '您已經成功登出！')
   res.redirect('/users/login')
 })
 
