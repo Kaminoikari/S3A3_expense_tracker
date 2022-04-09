@@ -5,13 +5,10 @@ const bcrypt = require('bcryptjs')
 const User = require('../../models/user')
 
 router.get('/login', (req, res) => {
-  const email = ''
-  const errors = []
-  res.render('login', { errors, email })
+  res.render('login')
 })
 
-router.post(
-  '/login',
+router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/users/login',
@@ -75,8 +72,8 @@ router.post('/register', async (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout()
-  res.redirect('/users/login')
   req.flash('success_msg', '您已經成功登出。')
+  res.redirect('/users/login')
 })
 
 module.exports = router
