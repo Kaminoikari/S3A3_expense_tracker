@@ -33,8 +33,14 @@ npm run dev
 ```
 以下為測試用的「正確」使用者名稱與對應的帳密：
 
-(name)	email	password	(登入後可見資料)
-user1	user1@example.com	12345678	id #1, #2, #3 號記帳
+| (name) | email	 | password | (登入後可見資料) |
+|-------|:-----:|------:|
+| user1   |  user1@example.com  |   12345678 | id #1, #2, #3 號記帳
+| user2   |  user2@example.com  |   12345678 |
+| 左3   |  中3  |   右3 |
+
+	password	
+user1		12345678	
 user2	user2@example.com	12345678	id #4, #5, #6 號記帳
 
 若要測試Facebook登入功能，需到Facebook for Developers建立應用程式
